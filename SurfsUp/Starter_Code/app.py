@@ -44,7 +44,7 @@ def home():
         f"/api/v1.0/stations<br/>"
         f"/api/v1.0/tobs<br/>"
         f"/api/v1.0/start<br/>"
-        f"/api/v1.0/start/end<br/>"
+        f"/api/v1.0/start_end<br/>"
     )
 
 
@@ -86,20 +86,16 @@ def tobs():
 
 @app.route("/api/v1.0/<start>")
 def temp(start):
-    start = session.query(func.min(Measurement.tobs), func.max(Measurement.tobs),\
-                      func.avg(Measurement.tobs)).\
-                      filter(Measurement.date >= 'start').all()
+    start_temp = session.query(func.min(Measurement.tobs), func.max(Measurement.tobs), func.avg(Measurement.tobs)).filter(Measurement.date <= start).all()
     session.close()
-    start_list = list(np.ravel(start))
+    start_list = list(np.ravel(start_temp))
     return jsonify(start_list)
 
 @app.route("/api/v1.0/<start>/<end>")
 def temps(start,end):
-    start_end = session.query(func.min(Measurement.tobs), func.max(Measurement.tobs),\
-                func.avg(Measurement.tobs)).\
-                filter(Measurement.date >= start <= end).all()
+    start_end_temp = session.query(func.min(Measurement.tobs), func.max(Measurement.tobs), func.avg(Measurement.tobs)).filter(Measurement.date <= start >= end).all()
     session.close()
-    start_end_list = list(np.ravel(start_end))
+    start_end_list = list(np.ravel(start_end_temp))
     return jsonify (start_end_list)
 
 
