@@ -46,9 +46,13 @@ After completing the initial analysis, I designed a Flask API based on the queri
 - I created flask routes for the following:
 
   1.) A homepage with all of the routes.
+  
   2.) A precipitation route that returns a JSON representation of the precipitation analysis data.
+  
   3.) A station route that returns a JSON list of stations.
+  
   4.) A tobs route that returns a JSON list of temperature observations for the previous year of data based on the most-active station.
+  
   5.) A start  and end route that returns a JSON list of the min, max, and avg temperature based on the URLS's specified start date.
 
 
