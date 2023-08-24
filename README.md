@@ -55,6 +55,14 @@ After completing the initial analysis, I designed a Flask API based on the queri
   
   5.) A start  and end route that returns a JSON list of the min, max, and avg temperature based on the URLS's specified start date.
 
+# Outside Resources
+
+Most syntax help was retrieved from the class gitlab. 
+
+Stack Overflow was used to help me understand how to create the start/end route queries.
+
+Matplotlib website helped me with creating bar and histogram plots.
+
 
 
 
